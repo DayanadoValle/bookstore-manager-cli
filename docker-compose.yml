@@ -4,9 +4,9 @@ services:
     container_name: manual-bookstore-manager-cli
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${DB_USER:-admin}
+      POSTGRES_USER: ${DB_USER:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-admin123}
-      POSTGRES_DB: ${DB_NAME:-manual-livraria}
+      POSTGRES_DB: ${DB_NAME:-livraria}
     ports:
       - "${DB_PORT:-5433}:5432"
     volumes:
