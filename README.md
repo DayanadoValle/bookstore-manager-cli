@@ -58,17 +58,11 @@ Existem **duas formas** de configurar o banco de dados. Escolha a que preferir �
 
 ### 🅱️ Opção 1 — Docker ou Podman Compose
 
-Use esta opção se você tem Docker ou Podman instalado. O banco de dados sobe já com as tabelas criadas automaticamente, sem precisar rodar o script manualmente.
+Use esta opção se você tem Docker ou Podman instalado.
+O banco de dados sobe já com as tabelas criadas automaticamente, sem precisar rodar o script manualmente.
 
 1. Não é necessário editar o `.env` — os valores padrão do `.env.example` já são usados pelo `docker-compose.yml` para criar o banco:
 
-   ```env
-   DB_HOST=localhost
-   DB_PORT=5432
-   DB_USER=postgres
-   DB_PASSWORD=admin123
-   DB_NAME=livraria
-   ```
 
 2. Suba o banco de dados:
 
