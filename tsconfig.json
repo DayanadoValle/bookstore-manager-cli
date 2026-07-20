@@ -22,8 +22,13 @@
     "declarationMap": true,
 
     // Stricter Typechecking Options
+<<<<<<< Updated upstream
    // "noUncheckedIndexedAccess": true,
     //"exactOptionalPropertyTypes": true,
+=======
+    //"noUncheckedIndexedAccess": true,
+    //exactOptionalPropertyTypes": true,
+>>>>>>> Stashed changes
 
     // Style Options
     // "noImplicitReturns": true,
