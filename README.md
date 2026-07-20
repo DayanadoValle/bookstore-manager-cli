@@ -40,7 +40,7 @@ A aplicação é capaz de:
 1. Clone o repositório:
 
    ```bash
-   git clone <link-do-repositorio>
+   git clone https://github.com/DayanadoValle/bookstore-manager-cli.git
    cd bookstore-manager-cli
    ```
 
