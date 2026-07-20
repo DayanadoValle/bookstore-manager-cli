@@ -90,7 +90,7 @@ Use esta opção se você tem Docker ou Podman instalado. O banco de dados sobe 
    docker compose down -v  # remove container e dados (recomeça do zero)
    ```
 
-> 💡 O arquivo `docker-compose.yml` só é utilizado se você rodar algum comando `docker compose` / `podman compose`. Se você optar pela Opção 1 (manual), esse arquivo simplesmente não é acionado.
+> 💡 O arquivo `docker-compose.yml` só é utilizado se você rodar algum comando `docker compose` / `podman compose`. Se você optar pela Opção 2 (manual), esse arquivo simplesmente não é acionado.
 
 ### 🅰️ Opção 2 — PostgreSQL instalado manualmente
 
@@ -318,4 +318,14 @@ Nome do autor: George Orwell
 
 ## 📋 Link do Kanban
 
-[(https://github.com/users/DayanadoValle/projects/6/views/1)]
+👉 [Acesse o Kanban do Projeto](https://github.com/users/DayanadoValle/projects/6/views/1)
+
+
+
+## 📺 Demonstração em Vídeo
+
+Confira o funcionamento completo do sistema e do loop de menus assistindo ao vídeo demonstrativo:
+👉 [Assista ao vídeo de demonstração do projeto](#)
+
+
+**Autor:** [Dayana do Valle](https://github.com/DayanadoValle)
