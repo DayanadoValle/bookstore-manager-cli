@@ -1,13 +1,16 @@
 {
-  "name": "book-cli-manual",
+  "name": "bookstore-manager-cli",
   "version": "1.0.0",
-  "description": "Sistema CLI para gerenciamento de emprestimo de livros",
+  "type": "module",
+  "description": "Sistema CLI para gerenciamento de uma livraria (autores, livros, clientes e empréstimos), utilizando Node.js, TypeScript e PostgreSQL.",
   "main": "dist/main.js",
   "scripts": {
     "dev": "tsx src/main.ts",
     "build": "tsc",
     "start": "node dist/main.js",
     "postinstall": "node scripts/setup.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "format": "prettier --write \"src/**/*.ts\""
   },
   "keywords": [
@@ -16,20 +19,23 @@
     "postgresql",
     "cli"
   ],
-  "author": "Dayana do Valle",
+  "author": "",
   "license": "MIT",
-  "type": "module",
   "dependencies": {
     "dotenv": "^16.4.5",
     "pg": "^8.12.0",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^20.14.9",
     "@types/pg": "^8.11.6",
     "@types/readline-sync": "^1.4.8",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.9.5",
     "tsx": "^4.19.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.65.0"
   }
 }
