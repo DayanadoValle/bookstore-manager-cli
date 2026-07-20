@@ -16,16 +16,16 @@ A aplicação é capaz de:
 
 ## 🧱 Tecnologias utilizadas
 
-| Tecnologia | Uso no projeto |
-|---|---|
-| **Node.js + TypeScript** | Linguagem e runtime da aplicação |
-| **PostgreSQL** | Banco de dados relacional |
-| **Docker / Podman Compose** | Ambiente isolado e reprodutível do banco de dados *(opcional)* |
-| **pg (node-postgres)** | Cliente PostgreSQL usado nas queries SQL |
-| **readline-sync** | Construção dos menus e formulários interativos no terminal |
-| **dotenv** | Carregamento de variáveis de ambiente a partir do `.env` |
-| **tsx** | Execução do TypeScript em desenvolvimento, sem etapa de build manual |
-| **ES Modules (NodeNext)** | Padrão moderno de import/export do Node.js/TypeScript |
+| Tecnologia                  | Uso no projeto                                                       |
+| --------------------------- | -------------------------------------------------------------------- |
+| **Node.js + TypeScript**    | Linguagem e runtime da aplicação                                     |
+| **PostgreSQL**              | Banco de dados relacional                                            |
+| **Docker / Podman Compose** | Ambiente isolado e reprodutível do banco de dados _(opcional)_       |
+| **pg (node-postgres)**      | Cliente PostgreSQL usado nas queries SQL                             |
+| **readline-sync**           | Construção dos menus e formulários interativos no terminal           |
+| **dotenv**                  | Carregamento de variáveis de ambiente a partir do `.env`             |
+| **tsx**                     | Execução do TypeScript em desenvolvimento, sem etapa de build manual |
+| **ES Modules (NodeNext)**   | Padrão moderno de import/export do Node.js/TypeScript                |
 
 > 💡 O projeto utiliza ES Modules nativos (`"type": "module"` + `moduleResolution: NodeNext`), o padrão moderno de import/export do Node.js/TypeScript.
 
@@ -56,33 +56,7 @@ A aplicação é capaz de:
 
 Existem **duas formas** de configurar o banco de dados. Escolha a que preferir — ambas funcionam com a mesma aplicação, sem nenhuma diferença no código.
 
-### 🅰️ Opção 1 — PostgreSQL instalado manualmente
-
-Use esta opção se você já tem o PostgreSQL instalado diretamente no seu sistema operacional.
-
-1. Crie o banco de dados:
-
-   ```sql
-   CREATE DATABASE bookstore_manager;
-   ```
-
-2. Execute o script disponível em `src/database/schema.sql` para criar as tabelas, relacionamentos e dados iniciais de exemplo:
-
-   ```bash
-   psql -U <usuario> -d bookstore_manager -f src/database/schema.sql
-   ```
-
-3. Abra o arquivo `.env` e preencha com as credenciais reais do seu banco PostgreSQL:
-
-   ```env
-   DB_HOST=localhost
-   DB_PORT=5432
-   DB_USER=postgres
-   DB_PASSWORD=sua_senha
-   DB_NAME=bookstore_manager
-   ```
-
-### 🅱️ Opção 2 — Docker ou Podman Compose
+### 🅱️ Opção 1 — Docker ou Podman Compose
 
 Use esta opção se você tem Docker ou Podman instalado. O banco de dados sobe já com as tabelas criadas automaticamente, sem precisar rodar o script manualmente.
 
@@ -117,6 +91,32 @@ Use esta opção se você tem Docker ou Podman instalado. O banco de dados sobe 
    ```
 
 > 💡 O arquivo `docker-compose.yml` só é utilizado se você rodar algum comando `docker compose` / `podman compose`. Se você optar pela Opção 1 (manual), esse arquivo simplesmente não é acionado.
+
+### 🅰️ Opção 2 — PostgreSQL instalado manualmente
+
+Use esta opção se você já tem o PostgreSQL instalado diretamente no seu sistema operacional.
+
+1. Crie o banco de dados:
+
+   ```sql
+   CREATE DATABASE bookstore_manager;
+   ```
+
+2. Execute o script disponível em `src/database/schema.sql` para criar as tabelas, relacionamentos e dados iniciais de exemplo:
+
+   ```bash
+   psql -U <usuario> -d bookstore_manager -f src/database/schema.sql
+   ```
+
+3. Abra o arquivo `.env` e preencha com as credenciais reais do seu banco PostgreSQL:
+
+   ```env
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USER=postgres
+   DB_PASSWORD=sua_senha
+   DB_NAME=bookstore_manager
+   ```
 
 ## ▶️ Execução
 
@@ -189,16 +189,16 @@ flowchart TD
     E --> F["PostgreSQL<br/>Persiste os dados"]
 ```
 
-| Camada | Responsabilidade |
-|---|---|
-| **Main** | Inicia a aplicação, estabelece a conexão com o banco e inicia o menu principal |
-| **Menus** | Organiza a navegação entre os módulos do sistema |
-| **Controllers** | Interagem com o usuário via terminal, capturam entradas e acionam os Services |
-| **Services** | Implementam as regras de negócio e validações da aplicação |
-| **Repositories** | Executam os comandos SQL de acesso ao banco de dados |
-| **Models** | Representam as entidades do sistema por meio de classes e interfaces tipadas |
-| **Database** | Centraliza a conexão com o PostgreSQL e o script de criação do banco |
-| **Utils** | Concentra funções auxiliares reutilizáveis (validações, formatação, erros) |
+| Camada           | Responsabilidade                                                               |
+| ---------------- | ------------------------------------------------------------------------------ |
+| **Main**         | Inicia a aplicação, estabelece a conexão com o banco e inicia o menu principal |
+| **Menus**        | Organiza a navegação entre os módulos do sistema                               |
+| **Controllers**  | Interagem com o usuário via terminal, capturam entradas e acionam os Services  |
+| **Services**     | Implementam as regras de negócio e validações da aplicação                     |
+| **Repositories** | Executam os comandos SQL de acesso ao banco de dados                           |
+| **Models**       | Representam as entidades do sistema por meio de classes e interfaces tipadas   |
+| **Database**     | Centraliza a conexão com o PostgreSQL e o script de criação do banco           |
+| **Utils**        | Concentra funções auxiliares reutilizáveis (validações, formatação, erros)     |
 
 ## 📁 Estrutura de pastas
 
@@ -250,17 +250,21 @@ bookstore-manager-cli/
 ## 🚀 Funcionalidades implementadas
 
 ### Autores
+
 - Cadastrar, listar, consultar por id, atualizar e remover autores.
 
 ### Livros
+
 - Cadastrar, listar, consultar, atualizar e remover livros.
 - Cada livro é obrigatoriamente vinculado a um autor previamente cadastrado.
 
 ### Clientes
+
 - Cadastrar, listar, consultar, atualizar e remover clientes.
 - Validação de e-mail e impedimento de cadastro duplicado.
 
 ### Empréstimos
+
 - Registrar empréstimo de um livro para um cliente, validando existência de livro/cliente e disponibilidade em estoque.
 - Impede que um cliente registre um novo empréstimo enquanto já tiver outro em aberto.
 - Impede o registro de empréstimo com data de devolução prevista no passado.
@@ -268,6 +272,7 @@ bookstore-manager-cli/
 - Consultar empréstimos, exibindo livro, cliente, datas e indicação de atraso (🔴 atrasado / status ativo).
 
 ### Relatórios
+
 - Livros disponíveis.
 - Livros emprestados no momento.
 - Livros cadastrados por autor.
@@ -275,7 +280,9 @@ bookstore-manager-cli/
 - Clientes com empréstimos ativos, com indicação de situação (🔴 Atrasado / 🟢 No prazo).
 
 ### Tratamento de erros
+
 A aplicação valida e trata, sem interromper a execução:
+
 - autor/livro/cliente/empréstimo inexistente;
 - livro sem disponibilidade para empréstimo;
 - cliente que já possui um empréstimo em aberto;
@@ -308,7 +315,6 @@ Escolha uma opção: 1
 Nome do autor: George Orwell
 ✅ Autor cadastrado com sucesso! (id: 4)
 ```
-
 
 ## 📋 Link do Kanban
 
