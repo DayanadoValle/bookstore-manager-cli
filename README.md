@@ -1,8 +1,8 @@
-# 📚 BookStore Manager CLI
+# BookStore Manager CLI
 
 Aplicação de linha de comando (CLI) para gerenciamento de uma livraria, desenvolvida como projeto final do Módulo 01 do curso de Desenvolvedor(a) Back-End Node. Permite administrar autores, livros, clientes e empréstimos, utilizando o PostgreSQL como mecanismo de persistência dos dados.
 
-## 🎯 Objetivo
+## Objetivo
 
 Consolidar os conhecimentos de Node.js, TypeScript, Programação Orientada a Objetos, programação assíncrona, arquitetura em camadas e modelagem de banco de dados relacional, entregando uma aplicação próxima da realidade de um sistema corporativo de pequeno porte.
 
@@ -14,28 +14,29 @@ A aplicação é capaz de:
 - realizar consultas relacionais utilizando SQL;
 - gerar relatórios gerenciais a partir dos dados armazenados.
 
-## 🧱 Tecnologias utilizadas
+## Tecnologias utilizadas
 
-| Tecnologia                  | Uso no projeto                                                       |
-| --------------------------- | -------------------------------------------------------------------- |
-| **Node.js + TypeScript**    | Linguagem e runtime da aplicação                                     |
-| **PostgreSQL**              | Banco de dados relacional                                            |
-| **Docker / Podman Compose** | Ambiente isolado e reprodutível do banco de dados _(opcional)_       |
-| **pg (node-postgres)**      | Cliente PostgreSQL usado nas queries SQL                             |
-| **readline-sync**           | Construção dos menus e formulários interativos no terminal           |
-| **dotenv**                  | Carregamento de variáveis de ambiente a partir do `.env`             |
-| **tsx**                     | Execução do TypeScript em desenvolvimento, sem etapa de build manual |
-| **ES Modules (NodeNext)**   | Padrão moderno de import/export do Node.js/TypeScript                |
+| Tecnologia | Uso no projeto |
+|---|---|
+| Node.js + TypeScript | Linguagem e runtime da aplicação |
+| PostgreSQL | Banco de dados relacional |
+| Docker / Podman Compose | Ambiente isolado e reprodutível do banco de dados (opcional) |
+| pg (node-postgres) | Cliente PostgreSQL usado nas queries SQL |
+| readline-sync | Construção dos menus e formulários interativos no terminal |
+| dotenv | Carregamento de variáveis de ambiente a partir do `.env` |
+| tsx | Execução do TypeScript em desenvolvimento, sem etapa de build manual |
+| ESLint + Prettier | Padronização e qualidade de código |
+| ES Modules (NodeNext) | Padrão moderno de import/export do Node.js/TypeScript |
 
-> 💡 O projeto utiliza ES Modules nativos (`"type": "module"` + `moduleResolution: NodeNext`), o padrão moderno de import/export do Node.js/TypeScript.
+Nota: o projeto utiliza ES Modules nativos (`"type": "module"` + `moduleResolution: NodeNext`), o padrão moderno de import/export do Node.js/TypeScript.
 
-## ✅ Requisitos para execução
+## Requisitos para execução
 
 - Node.js 18 ou superior
 - npm
-- PostgreSQL 14 ou superior **ou** Docker/Podman com suporte a Compose
+- PostgreSQL 14 ou superior ou Docker/Podman com suporte a Compose
 
-## ⚙️ Instalação
+## Instalação
 
 1. Clone o repositório:
 
@@ -50,19 +51,17 @@ A aplicação é capaz de:
    npm install
    ```
 
-   > 💡 Se o `.env` já existir, o script não sobrescreve — seguro rodar `npm install` quantas vezes quiser.
+   Nota: se o `.env` já existir, o script não sobrescreve — seguro rodar `npm install` quantas vezes quiser.
 
-## 🗄️ Configuração do banco de dados
+## Configuração do banco de dados
 
-Existem **duas formas** de configurar o banco de dados. Escolha a que preferir — ambas funcionam com a mesma aplicação, sem nenhuma diferença no código.
+Existem duas formas de configurar o banco de dados. Escolha a que preferir — ambas funcionam com a mesma aplicação, sem nenhuma diferença no código.
 
-### 🅱️ Opção 1 — Docker ou Podman Compose
+### Opção 1 — Docker ou Podman Compose
 
-Use esta opção se você tem Docker ou Podman instalado.
-O banco de dados sobe já com as tabelas criadas automaticamente, sem precisar rodar o script manualmente.
+Use esta opção se você tem Docker ou Podman instalado. O banco de dados sobe já com as tabelas criadas automaticamente, sem precisar rodar o script manualmente.
 
-1. Não é necessário editar o `.env` — os valores padrão do `.env.example` já são usados pelo `docker-compose.yml` para criar o banco:
-
+1. Não é necessário editar o `.env` — os valores padrão do `.env.example` já são usados pelo `docker-compose.yml` para criar o banco.
 
 2. Suba o banco de dados:
 
@@ -84,9 +83,9 @@ O banco de dados sobe já com as tabelas criadas automaticamente, sem precisar r
    docker compose down -v  # remove container e dados (recomeça do zero)
    ```
 
-> 💡 O arquivo `docker-compose.yml` só é utilizado se você rodar algum comando `docker compose` / `podman compose`. Se você optar pela Opção 2 (manual), esse arquivo simplesmente não é acionado.
+Nota: o arquivo `docker-compose.yml` só é utilizado se você rodar algum comando `docker compose` / `podman compose`. Se você optar pela Opção 2 (manual), esse arquivo simplesmente não é acionado.
 
-### 🅰️ Opção 2 — PostgreSQL instalado manualmente
+### Opção 2 — PostgreSQL instalado manualmente
 
 Use esta opção se você já tem o PostgreSQL instalado diretamente no seu sistema operacional.
 
@@ -112,7 +111,7 @@ Use esta opção se você já tem o PostgreSQL instalado diretamente no seu sist
    DB_NAME=bookstore_manager
    ```
 
-## ▶️ Execução
+## Execução
 
 Após configurar o banco de dados (por qualquer uma das duas opções acima), rode a aplicação:
 
@@ -129,7 +128,17 @@ npm run build
 npm start
 ```
 
-## 🗺️ Diagrama Entidade-Relacionamento (ER)
+## Qualidade de código
+
+O projeto usa ESLint (para identificar problemas e más práticas) e Prettier (para formatação consistente).
+
+```bash
+npm run lint        # verifica problemas no código
+npm run lint:fix    # corrige automaticamente o que for possível
+npm run format      # formata todo o código-fonte
+```
+
+## Diagrama Entidade-Relacionamento (ER)
 
 ```mermaid
 erDiagram
@@ -168,9 +177,9 @@ erDiagram
     }
 ```
 
-Todos os relacionamentos são **1 para N** (um autor tem vários livros, um livro pode ter vários empréstimos ao longo do tempo, um cliente pode ter vários empréstimos). Não há relacionamentos N:N neste modelo — cada livro está vinculado a um único autor, conforme exigido pelo escopo do projeto.
+Todos os relacionamentos são 1 para N (um autor tem vários livros, um livro pode ter vários empréstimos ao longo do tempo, um cliente pode ter vários empréstimos). Não há relacionamentos N:N neste modelo — cada livro está vinculado a um único autor, conforme exigido pelo escopo do projeto.
 
-## 🏗️ Arquitetura do projeto
+## Arquitetura do projeto
 
 O projeto segue uma arquitetura organizada em camadas, promovendo a separação de responsabilidades:
 
@@ -183,18 +192,18 @@ flowchart TD
     E --> F["PostgreSQL<br/>Persiste os dados"]
 ```
 
-| Camada           | Responsabilidade                                                               |
-| ---------------- | ------------------------------------------------------------------------------ |
-| **Main**         | Inicia a aplicação, estabelece a conexão com o banco e inicia o menu principal |
-| **Menus**        | Organiza a navegação entre os módulos do sistema                               |
-| **Controllers**  | Interagem com o usuário via terminal, capturam entradas e acionam os Services  |
-| **Services**     | Implementam as regras de negócio e validações da aplicação                     |
-| **Repositories** | Executam os comandos SQL de acesso ao banco de dados                           |
-| **Models**       | Representam as entidades do sistema por meio de classes e interfaces tipadas   |
-| **Database**     | Centraliza a conexão com o PostgreSQL e o script de criação do banco           |
-| **Utils**        | Concentra funções auxiliares reutilizáveis (validações, formatação, erros)     |
+| Camada | Responsabilidade |
+|---|---|
+| Main | Inicia a aplicação, estabelece a conexão com o banco e inicia o menu principal |
+| Menus | Organiza a navegação entre os módulos do sistema |
+| Controllers | Interagem com o usuário via terminal, capturam entradas e acionam os Services |
+| Services | Implementam as regras de negócio e validações da aplicação |
+| Repositories | Executam os comandos SQL de acesso ao banco de dados |
+| Models | Representam as entidades do sistema por meio de classes e interfaces tipadas |
+| Database | Centraliza a conexão com o PostgreSQL e o script de criação do banco |
+| Utils | Concentra funções auxiliares reutilizáveis (validações, formatação, erros) |
 
-## 📁 Estrutura de pastas
+## Estrutura de pastas
 
 ```
 bookstore-manager-cli/
@@ -235,13 +244,17 @@ bookstore-manager-cli/
 │   └── setup.js
 ├── .env.example
 ├── .gitignore
+├── .prettierignore
+├── .prettierrc.json
 ├── docker-compose.yml
+├── eslint.config.js
 ├── package.json
+├── package-lock.json
 ├── tsconfig.json
 └── README.md
 ```
 
-## 🚀 Funcionalidades implementadas
+## Funcionalidades implementadas
 
 ### Autores
 
@@ -263,7 +276,7 @@ bookstore-manager-cli/
 - Impede que um cliente registre um novo empréstimo enquanto já tiver outro em aberto.
 - Impede o registro de empréstimo com data de devolução prevista no passado.
 - Registrar devolução, atualizando automaticamente a quantidade disponível do livro.
-- Consultar empréstimos, exibindo livro, cliente, datas e indicação de atraso (🔴 atrasado / status ativo).
+- Consultar empréstimos, exibindo livro, cliente, datas e indicação de atraso.
 
 ### Relatórios
 
@@ -271,7 +284,7 @@ bookstore-manager-cli/
 - Livros emprestados no momento.
 - Livros cadastrados por autor.
 - Quantidade de empréstimos por livro.
-- Clientes com empréstimos ativos, com indicação de situação (🔴 Atrasado / 🟢 No prazo).
+- Clientes com empréstimos ativos, com indicação de situação (atrasado / no prazo).
 
 ### Tratamento de erros
 
@@ -284,7 +297,7 @@ A aplicação valida e trata, sem interromper a execução:
 - e-mail de cliente duplicado;
 - remoção de registros com vínculos ativos (ex.: autor com livros, livro/cliente com empréstimos).
 
-## 💻 Exemplo de utilização
+## Exemplo de utilização
 
 ```
 =======================================
@@ -310,16 +323,24 @@ Nome do autor: George Orwell
 ✅ Autor cadastrado com sucesso! (id: 4)
 ```
 
-## 📋 Link do Kanban
+## Melhorias futuras
 
-👉 [Acesse o Kanban do Projeto](https://github.com/users/DayanadoValle/projects/6/views/1)
+Algumas evoluções que ficam como próximos passos naturais para o projeto:
 
+- API RESTful — migrar a interface CLI para uma API HTTP (Express ou NestJS), permitindo o consumo por aplicações Front-End ou Mobile.
+- ORM — substituir as queries SQL puras por Prisma, TypeORM ou Sequelize, facilitando migrações e manutenção do banco.
+- Autenticação e autorização — sistema de login para funcionários, com níveis de acesso (Administrador vs. Atendente), usando bcrypt para hash de senha e JWT para tokens.
+- Testes automatizados — testes unitários e de integração com Jest, garantindo que regras de negócio críticas (como a validação de estoque) não quebrem em futuras alterações.
+- Sistema de multas — cálculo automático de multa em devoluções com atraso, a partir da diferença entre a data prevista e a data real de devolução.
+- Paginação e filtros avançados — paginar as listagens do terminal e permitir busca por gênero, nacionalidade do autor, entre outros filtros.
 
+## Link do Kanban
 
-## 📺 Demonstração em Vídeo
+[Acesse o Kanban do Projeto](https://github.com/users/DayanadoValle/projects/6/views/1)
+
+## Demonstração em Vídeo
 
 Confira o funcionamento completo do sistema e do loop de menus assistindo ao vídeo demonstrativo:
-👉 [Assista ao vídeo de demonstração do projeto](#)
-
+[Assista ao vídeo de demonstração do projeto](#)
 
 **Autor:** [Dayana do Valle](https://github.com/DayanadoValle)
